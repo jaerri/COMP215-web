@@ -1,0 +1,31 @@
+#left {
+    float: left;
+    width: 210px;
+    border: dashed blue
+}
+
+#right {
+    float: right;
+    width: 200px;
+    border: dashed blue
+}
+
+#center {
+    margin-left: 210px;
+    /* 218px works better, why? */
+    margin-right: 210px;
+    border: solid blue
+}
+
+#top {
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    background: #ccc;
+}
+
+#footer {
+    background: #ccc;
+    margin: 20px;
+    text-align: center;
+}

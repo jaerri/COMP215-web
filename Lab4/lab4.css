@@ -1,0 +1,62 @@
+.square-black {
+    background-color: rgba(143, 188, 143, 0.75);
+}
+.square-black:hover {
+    background-color: rgb(143, 188, 143);
+}
+.square-white {
+    background-color: rgb(240, 248, 255);
+}
+.square-white:hover {
+    background-color: rgb(220, 228, 235);
+}
+.square-validmove {
+    background-color: rgb(240, 230, 140, 0.75);
+    border: 2px ridge blanchedalmond;
+}
+.square-validmove:hover {
+    background-color: rgb(240, 230, 140);
+}
+.square-capturemove {
+    background-color: rgb(255, 5, 5, 0.75);
+}
+.square-capturemove:hover {
+    background-color: rgb(255, 5, 5);
+}
+#main-content {
+    & .row {
+        border: 1px black solid;
+        & > div {
+            border-inline-start: 1px black solid;
+        }
+        & > div:first-child {
+            border-inline-start: 0;
+        }
+    }
+    & .row + .row {
+        border-block-start: 0;
+    }
+}
+.chess-board {
+    display: grid;
+    grid-template-rows: repeat(8, 1fr) auto;
+    grid-template-columns: auto repeat(8, 1fr);
+    aspect-ratio: 1/1;
+    width: min(69vh, 100%);
+}
+.chess-abclabel {
+    text-align: center;
+    padding-block-start: 3px;
+}
+.chess-numberlabel {
+    display: flex;
+    align-items: center;
+    padding-inline-end: 8px;
+}
+.chess-square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: large;
+}
