@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 5 - Kitchen Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link href="./lab5.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-lg" id="main">
+        <div class="row">
+            <h2> <a href="../index.html">Kitchen Calculator</a> </h2>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-9">
+                <form name="calculator">
+                <!-- choice inputs -->
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                    <label class="form-label" for="productType-select">1. Product Type</label>
+                    <select class="input-box" id="productType-select" required>
+                        <option value="">--Select Your Product--</option>
+                        <option value="BC">Base Cabinets</option>
+                        <option value="WC">Wall Cabinets</option>
+                        <option value="CT">Counter Tops</option>
+                    </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                    <fieldset>
+                        <legend class="form-label">2. Product Line</legend>
+                        <input type="radio" name="productLine" id="productLine-ES" value="ES" required>
+                        <label for="productLine-ES">Empire Standard</label>
+                        <br \>
+                        <input type="radio" name="productLine" id="productLine-KE" value="KE">
+                        <label for="productLine-KE">Kitchen Elite</label>
+                        <br \>
+                        <input type="radio" name="productLine" id="productLine-GSP" value="GSP">
+                        <label for="productLine-GSP">Gold Star Plus</label>
+                    </fieldset>
+                    </div>
+                </div>
+                <!-- text input -->
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label" for="linearFootage">3. Linear Footage</label>
+                        <input required class="input-box" type="number" id="linearFootage" placeholder="Enter footage">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label" for="cornerUnits">4. Corner Units</label>
+                        <input class="input-box" type="number" id="cornerUnits" placeholder="Enter number of units">
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Calculate" id="calculateSubmit">
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-label" for="resultTotal">5. Total Price</label>
+                        <input class="input-box" type="text" id="resultTotal" readonly disabled>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="col-12 col-md-3">
+                <img id="image">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="lab5.js"></script>
+</body>
+
+</html>
