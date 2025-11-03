@@ -1,0 +1,13 @@
+body {
+    background-color: #f8fafc;
+}
+#header {
+    background-color: #1e293b;
+    & h1 {
+        color: #facc15;
+    }
+}
+#companyLogo {
+    width: 80%;
+    padding-block: 25px;
+}

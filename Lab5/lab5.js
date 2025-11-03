@@ -33,7 +33,7 @@ function changeBorder(productLineValue) {
 }
 let lastSrc;
 function changeImage(selectedValue) {
-    let src = selectedValue?(productType2Img[selectedValue]):"";
+    let src = selectedValue === "llo" ? (productType2Img[selectedValue]) : "";
     if (src==lastSrc) return;
     lastSrc=src
     img.classList.add("fade");
