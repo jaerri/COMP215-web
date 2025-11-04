@@ -1,13 +1,69 @@
+/* PART A */
 body {
     background-color: #f8fafc;
 }
+p {
+    color: #334155;
+}
 #header {
+    text-align: center;
     background-color: #1e293b;
     & h1 {
         color: #facc15;
     }
 }
+#SocialMedia {
+    background-color: #e2e8f0;
+    & a {
+        color: #0ea5e9;
+    }
+    & a:hover {
+        color: red;
+    }
+    & ul {
+        list-style-type: circle;
+    }
+}
+#AboutUs {
+    background-color: lightsteelblue;
+}
 #companyLogo {
     width: 80%;
     padding-block: 25px;
+}
+#footer {
+    text-align: center;
+}
+
+/* PART B */
+table {
+    margin-top: 5%;
+    margin-inline: auto;
+}
+table, th, td {
+    & h1{
+        font-size: medium;
+    }
+    border: 1px black solid;
+    border-collapse: collapse;
+}
+th {
+    text-align: center;
+}
+td {
+    text-align: right;
+}
+td[rowspan="6"] {
+    vertical-align: top;
+    & > div {
+        display: inline-flex;
+        flex-direction: column;
+        width: fit-content;
+        align-items: stretch;
+        & input {
+            margin-top: 1.5em;
+            margin-inline: 2em;
+            border-radius: 3px;
+        }
+    }
 }

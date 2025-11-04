@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sales Commission Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link href="./stylesheet.css" rel="stylesheet">
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <th colspan="3">
+                    <h1>
+                        <a href="index.html"> Sales Commission Calculator Form </a>
+                    </h1>
+                </th>
+            </tr>
+            <tr>
+                <td></td>
+                <th>Input Numbers Below</th>
+                <td rowspan="6">
+                    <div>
+                        <input type="button" value="Check Numbers" id="btnCheck" onclick="check()">
+                        <div></div>
+                        <input type="button" value="Calculate" id="btnCalculate" onclick="calculate()">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Price Per Widget Sold:</td>
+                <td>
+                    <span>$</span>
+                    <input type="number" id="WidgetPriceTextbox">
+                </td>
+            </tr>
+            <tr>
+                <td>Number of Widgets Sold:</td>
+                <td>
+                    <input type="number" id="NumberWidgetsSoldTextbox">
+                </td>
+            </tr>
+            <tr>
+                <td>Commission Rate (%):</td>
+                <td>
+                    <input type="number" id="CommissionRateTextbox">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Click Calculate Button to see result below:</td>
+            </tr>
+            <tr>
+                <td>Commission Earned:</td>
+                <td>
+                    <span>$</span>
+                    <input type="text" id="CommissionEarnedTextbox" disabled>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="midterm.js"></script>
+</body>
+
+</html>
