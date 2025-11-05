@@ -1,0 +1,35 @@
+body {
+    background-color: #f8fafc;
+}
+p {
+    color: #334155;
+}
+#header {
+    text-align: center;
+    background-color: #1e293b;
+    & h1 {
+        color: #facc15;
+    }
+}
+#SocialMedia {
+    background-color: #e2e8f0;
+    & a {
+        color: #0ea5e9;
+    }
+    & a:hover {
+        color: red;
+    }
+    & ul {
+        list-style-type: circle;
+    }
+}
+#AboutUs {
+    background-color: lightsteelblue;
+}
+#companyLogo {
+    width: 80%;
+    padding-block: 25px;
+}
+#footer {
+    text-align: center;
+}

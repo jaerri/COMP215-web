@@ -1,0 +1,29 @@
+table {
+    margin-top: 5%;
+    margin-inline: auto;
+}
+table, th, td {
+    & h1{
+        font-size: medium;
+    }
+    border: 1px black solid;
+    border-collapse: collapse;
+}
+th {
+    text-align: center;
+}
+td {
+    text-align: right;
+}
+td[rowspan="6"] {
+    vertical-align: top;
+    & > div {
+        display: inline-flex;
+        flex-direction: column;
+        & input {
+            margin-top: 1.5em;
+            margin-inline: 2em;
+            border-radius: 3px;
+        }
+    }
+}

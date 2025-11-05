@@ -1,0 +1,30 @@
+main {
+    display: flex;
+    row-gap: 1em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, beige, grey);
+
+    & a {
+        display: block;
+        padding: 2em 1em;
+        border: 5px beige outset;
+        border-radius: 10px;
+        background-color: bisque;
+        text-decoration: none;
+        color: #000;
+    }
+
+    & a:hover {
+        background-color: #ffe4c4bb;
+        border-style: inset;
+        color: #000000dd;
+        font-size: 98%;
+    }
+}
+
+#homelink {
+    background-color: lightcoral;
+}
