@@ -101,8 +101,8 @@ for (let i=0;i<productLineRadios.length;i++) {
 cornerUnits.addEventListener("change", imageCheck);
 
 // calculate
-form.addEventListener("submit", function() {
-    event.preventDefault();
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
     let quantity, unitPrice, e=false; 
     if (cornerMode) {
         unitPrice = cornerPriceTable[checkedRadio.value];

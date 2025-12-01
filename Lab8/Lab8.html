@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 5 - Kitchen Calculator</title>
+    <style>
+        .validated:invalid {
+            background-color: #FAC3C9;
+        }
+
+        .validated:valid {
+            background-color: #BDF0A8;
+        }
+
+        table,
+        td,
+        tr {
+            border: 1px black solid;
+            border-collapse: collapse;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" \
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main id="contactPage">
+        <form>
+            <label for="firstname">First Name:</label>
+            <input class="validated" type="text" id="firstname" name="firstname" required /><br \>
+            <label for="phone">Address:</label>
+            <input class="validated" type="text" id="address" name="address" required /><br \>
+            <label for="emailBox">Email:</label>
+            <input class="validated" type="email" id="email" name="email" required />
+            <input type="submit" id="submit" text="SUBMIT" required />
+        </form>
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td>Address</td>
+                <td>Email</td>
+            </tr>
+        </table>
+    </main>
+
+    <script>
+        $(document).ready(function () {
+            var mainElement = document.getElementById('contactPage');
+            $(mainElement).find('form input[type="submit"]').click(function (evt) {
+                if (!$(evt.target).parents('form')[0].checkValidity()) return;
+                evt.preventDefault();
+                var contact = serializeForm();
+                var html = '<tr><td>' + contact.firstname + '</td>' +
+                    '<td>' + contact.address + '</td>' +
+                    '<td>' + contact.email + '</td></tr>'
+                $(mainElement).find('table tbody').append(html);
+                $(mainElement).find('form :input[name]').val('');
+            });
+            function serializeForm() {
+                var inputFields = $(mainElement).find('form :input');
+                var result = {};
+                $.each(inputFields, function (index, value) {
+                    if ($(value).attr('name')) {
+                        result[$(value).attr('name')] = $(value).val();
+                    }
+                });
+                return result;
+            }
+        });
+    </script>
+</body>
+
+</html>

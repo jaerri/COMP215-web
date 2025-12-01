@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5 JavaScript Form Validation</title>
+
+    <style>
+        .ValidateMe:invalid {
+            background-color: #FAC3C9;
+        }
+
+        .ValidateMe:valid {
+            background-color: #BDF0A8;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>HTML5 JavaScript Form Validation</h2>
+    <form name="form">
+        <label for="contactName">Contact Name</label>
+        <input class="ValidateMe" type="text" id="contactName" name="contactName" required minlength="3" maxlength="10" autocomplete="off" /> <br />
+        <label for="phone">Phone #</label>
+        <input class="ValidateMe" type="tel" id="phoneNumber" name="phoneNumber" required pattern="^[0-9\(\) ]{5,15}$" /><br />
+        <label for="emailBox">Email (@ required)</label>
+        <input class="ValidateMe" type="email" id="emailBox" name="emailBox" required /><br />
+        <label for="companyName">Company Name</label>
+        <select required name="companyName" id="companyName" class="validated">
+            <option value="">Please select</option>
+            <option value="1">Lorem Ipsum Inc.</option>
+            <option value="2">Smith Ltd</option>
+            <option value="3">Albert GmbH</option>
+        </select><br />
+        <input type="submit" value="Submit" /><br />
+    </form>
+
+    <script>
+        const phoneNumber = document.getElementById("phoneNumber")
+        const form = document.forms['form'];
+        phoneNumber.addEventListener("invalid", function() {
+            if (this.value === "") 
+                this.setCustomValidity("Phone number is required.");
+            else if (this.validity.patternMismatch) 
+                this.setCustomValidity("Not a valid phone number. Must match regex pattern");
+            else this.setCustomValidity("");
+        });
+        document.getElementById("emailBox").addEventListener("invalid", function() {
+            if (this.validity.typeMismatch)
+                this.setCustomValidity("Not a valid email.\nMust match default email pattern (contains an ‘@’ symbol)")
+            else this.setCustomValidity("");
+        });
+        form.addEventListener("input", function() {
+            this.checkValidity();
+        });
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            let alertString= "successful submit!!!!\n";
+            for (let el of this.elements) {
+                if (el.type === "submit") continue;
+                alertString += `${el.name}: ${el.value}\n`;
+            }
+            alert(alertString);
+        })
+    </script>
+</body>
+</html>

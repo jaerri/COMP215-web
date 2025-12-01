@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5 and CSS Form Validation</title>
+
+    <style>
+        .ValidateMe:invalid {
+            background-color: #FAC3C9;
+        }
+
+        .ValidateMe:valid {
+            background-color: #BDF0A8;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h2>HTML5 and CSS Form Validation</h2>
+    <a href="https://www.w3schools.com/js/js_validation.asp">Quick Reference: https://www.w3schools.com/js/js_validation.asp</a><br />
+    <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">Full Reference: https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation</a>
+    <br />
+    <br />
+
+    <form>
+        <label for="fname">First Name (3 to 10 chars)</label>
+        <input class="ValidateMe" type="text" id="fname" name="fname" required pattern=".{3,10}" autofocus autocomplete="off" /> <br />
+        <label for="fname2">First Name (3 to 10 chars)</label>
+        <input class="ValidateMe" type="text" id="fname2" name="fname2" required minlength="3" maxlength="10" autocomplete="off" /> <br />
+        <label for="phone">Phone #</label>
+        <input class="ValidateMe" type="tel" id="phone" name="phone" required pattern="[0-9\(\) ]{5,15}" /><br />
+        <label for="phone2">Phone #</label>
+        <input class="ValidateMe" type="tel" id="phone2" name="phone2" required pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$" /><br />
+        <label for="NumberBox">Number (between 5 and 50)</label>
+        <input class="ValidateMe" type="number" id="NumberBox" name="NumberBox" required min="5" max="50" step="2" /><br />
+        <label for="EmailBox">Email (@ required)</label>
+        <input class="ValidateMe" type="email" id="EmailBox" name="EmailBox" required /><br />
+        
+        <input type="button" value="Check Form" />
+    </form>
+
+</body>
+</html>

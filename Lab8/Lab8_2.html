@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 5 - Kitchen Calculator</title>
+    <style>
+        .validated:invalid {
+            background-color: #FAC3C9;
+        }
+
+        .validated:valid {
+            background-color: #BDF0A8;
+        }
+
+        table,
+        td,
+        th,
+        tr {
+            border: 1px black solid;
+            border-collapse: collapse;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" \
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main id="contactPage">
+        <form>
+            <label for="firstname">First Name:</label>
+            <input class="validated" type="text" id="firstname" name="firstname" required /><br \>
+            <label for="phone">Address:</label>
+            <input class="validated" type="text" id="address" name="address" required /><br \>
+            <label for="emailBox">Email:</label>
+            <input class="validated" type="email" id="email" name="email" required />
+            <input type="submit" id="submit" text="SUBMIT" required />
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Contact name</th>
+                    <th>Address</th>
+                    <th>Email address</th>
+                    <th><a class="deleteAll" href="#">Delete All</a></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </main>
+
+    <script>
+        $(document).ready(function () {
+            var mainElement = document.getElementById('contactPage');
+            $(mainElement).find("a.deleteAll").click(function (evt) {
+                evt.preventDefault();
+                localStorage.clear();
+                $(mainElement).find('table tbody').empty();
+            });
+            $(mainElement).on("click", "a.delete",
+                function (evt) {
+                    evt.preventDefault();
+                    deleteContact(evt);
+                }
+            );
+            $(mainElement).find('form input[type="submit"]').click(function (evt) {
+                if (!$(evt.target).parents('form')[0].checkValidity()) return;
+                evt.preventDefault();
+                saveContact();
+            });
+            function loadContacts() {
+                var contactsStored = localStorage.getItem('contacts');
+                if (contactsStored) {
+                    contacts = JSON.parse(contactsStored);
+                    $.each(contacts, function (index, contact) {
+                        var row = $('<tr>');
+                        var html = '<td>' + contact.firstname + '</td>' +
+                            '<td>' + contact.address + '</td>' +
+                            '<td>' + contact.email + '</td>' +
+                            '<td><a class="delete" href="#">delete</a></td>';
+                        row.data().contactId = contact.id;
+                        row.append(html);
+                        $(mainElement).find('table tbody').append(row);
+                    });
+                }
+            }
+            function serializeForm() {
+                var inputFields = $(mainElement).find('form :input');
+                var result = {};
+                $.each(inputFields, function (index, value) {
+                    if ($(value).attr('name')) {
+                        result[$(value).attr('name')] = $(value).val();
+                    }
+                });
+                return result;
+            }
+            function store(contact) {
+                var contactsStored = localStorage.getItem('contacts');
+                var contacts = [];
+                if (contactsStored) {
+                    contacts = JSON.parse(contactsStored);
+                }
+                contacts.push(contact);
+                localStorage.setItem('contacts', JSON.stringify(contacts));
+            }
+            function saveContact() {
+                var contact = serializeForm();
+                contact.id = $.now();
+                var row = $('<tr>');
+                var html = '<td>' + contact.firstname + '</td>' +
+                    '<td>' + contact.address + '</td>' +
+                    '<td>' + contact.email + '</td>' +
+                    '<td><a class="delete" href="#">delete</a></td>';
+                row.data().contactId = contact.id;
+                row.append(html);
+                store(contact);
+                $(mainElement).find('table tbody').append(row);
+                $(mainElement).find('form :input[name]').val('');
+            }
+            function deleteContact(evt) {
+                var contactId = $(evt.target).parents('tr').data().contactId;
+                var contacts = JSON.parse(localStorage.getItem('contacts'));
+                var newContacts = contacts.filter(function (c) {
+                    return c.id != contactId;
+                });
+                localStorage.setItem('contacts', JSON.stringify(newContacts));
+                $(evt.target).parents('tr').remove();
+            }
+        });
+    </script>
+</body>
